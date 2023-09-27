@@ -40,7 +40,16 @@ createImage('./img/3467768495a4f599cced094k_wallpaper_5.jpg')
         // need a global variable for that )
         image.style.display = 'none';
 
-        return createImage('./img/Nice-Nature-4K.jpg');
+        return new Promise((res, rej) => {
+            image.src = './img/Nice-Nature-4K.jpg';
+            image.onload = async () => {
+                await wait(2);
+
+                res(image);
+            };
+
+            image.onerror = rej;
+        });
     })
     // After the 2 seconds have passed, hide the current image
     .then((image) => (image.style.display = 'none'))
@@ -55,7 +64,16 @@ createImage('error path')
         // need a global variable for that )
         image.style.display = 'none';
 
-        return createImage('./img/Nice-Nature-4K.jpg');
+        return new Promise((res, rej) => {
+            image.src = './img/Nice-Nature-4K.jpg';
+            image.onload = async () => {
+                await wait(2);
+
+                res(image);
+            };
+
+            image.onerror = rej;
+        });
     })
     // After the 2 seconds have passed, hide the current image
     .then((image) => (image.style.display = 'none'))
